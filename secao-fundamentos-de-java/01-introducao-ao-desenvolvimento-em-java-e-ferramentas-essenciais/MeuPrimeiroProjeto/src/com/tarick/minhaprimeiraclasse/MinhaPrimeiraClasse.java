@@ -3,8 +3,11 @@ package com.tarick.minhaprimeiraclasse;
 
 public class MinhaPrimeiraClasse {
     public static void main(String[] args) {
-        float numA = -101.23f;
-        float numB = 2.356f;
-        System.out.println(numA + numB); // -98.874
+        double valorUm = 0.5; // double inicializado naturalmente
+        double valorDois = 0.5d; // double definido explicitamente
+        double valorTres = 0.123456789; // várias casas decimais
+        System.out.println(valorUm); // 0.5
+        System.out.println(valorDois); // 0.5
+        System.out.println(valorTres); // 0.123456789
     }
 }
