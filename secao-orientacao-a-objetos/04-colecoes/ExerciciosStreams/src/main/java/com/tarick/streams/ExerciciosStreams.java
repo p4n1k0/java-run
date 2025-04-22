@@ -15,6 +15,8 @@ public class ExerciciosStreams {
 
     List<String> palavras = List.of("java", "stream", "programação", "backend");
     System.out.printf(converteParaCaixaAlta(palavras).toString());
+
+    System.out.printf(stringsMaioresQueX(palavras, 5).toString());
   }
 
   public static List<Integer> filtrarNumerosPares(List<Integer> numeros) {
@@ -27,5 +29,9 @@ public class ExerciciosStreams {
 
   public static int somaNumeros(List<Integer> numeros) {
     return numeros.stream().mapToInt(Integer::intValue).sum();
+  }
+
+  public static List<String> stringsMaioresQueX(List<String> palavras, int x) {
+    return palavras.stream().filter(palavra -> palavra.length() > x).toList();
   }
 }
