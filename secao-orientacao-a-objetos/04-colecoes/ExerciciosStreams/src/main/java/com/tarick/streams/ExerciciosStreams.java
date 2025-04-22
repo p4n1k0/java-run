@@ -9,9 +9,16 @@ public class ExerciciosStreams {
 
     List<Integer> numerosPares = filtrarNumerosPares(numeros);
     System.out.println(numerosPares.toString());
+
+    List<String> palavras = List.of("java", "stream", "programação", "backend");
+    System.out.println(converteParaCaixaAlta(palavras).toString());
   }
 
   public static List<Integer> filtrarNumerosPares(List<Integer> numeros) {
     return numeros.stream().filter(num -> num % 2 == 0).toList();
+  }
+
+  public static List<String> converteParaCaixaAlta(List<String> palavras) {
+    return palavras.stream().map(String::toUpperCase).toList();
   }
 }
