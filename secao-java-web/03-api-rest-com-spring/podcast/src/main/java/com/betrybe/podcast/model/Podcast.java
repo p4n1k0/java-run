@@ -4,6 +4,7 @@ public class Podcast {
   private Long id;
   private String name;
   private String url;
+  private String secretToken;
 
   public Long getId() {
     return id;
@@ -27,5 +28,13 @@ public class Podcast {
 
   public void setUrl(String url) {
     this.url = url;
+  }
+
+  public String getSecretToken() {
+    return secretToken;
+  }
+
+  public void setSecretToken(String secretToken) {
+    this.secretToken = secretToken;
   }
 }
