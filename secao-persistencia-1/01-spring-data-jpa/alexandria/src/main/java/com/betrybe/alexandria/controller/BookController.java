@@ -56,4 +56,8 @@ public class BookController {
   public BookDto deleteBookById(@PathVariable Long id) throws BookNotFoundException {
     return BookDto.fromEntity(bookService.deleteById(id));
   }
+
+  @PostMapping("/{bookId}/detail")
+  @ResponseStatus(HttpStatus.CREATED)
+
 }
