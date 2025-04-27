@@ -12,6 +12,9 @@ import com.betrybe.alexandria.service.exception.BookNotFoundException;
 import com.betrybe.alexandria.service.exception.PublisherNotFoundException;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -35,8 +38,11 @@ public class BookService {
     return bookRepository.findById(id).orElseThrow(BookNotFoundException::new);
   }
 
-  public List<Book> findAll() {
-    return bookRepository.findAll();
+  public List<Book> findAll(int pageNumber, int pageSize) {
+    Pageable pageable = PageRequest.of(pageNumber, pageSize);
+    Page<Book> page = bookRepository.findAll(pageable);
+
+    return page.toList();
   }
 
   public Book create(Book book) {
