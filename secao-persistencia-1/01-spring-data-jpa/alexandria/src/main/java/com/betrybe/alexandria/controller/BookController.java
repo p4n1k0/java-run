@@ -1,9 +1,12 @@
 package com.betrybe.alexandria.controller;
 
 import com.betrybe.alexandria.controller.dto.BookCreationDto;
+import com.betrybe.alexandria.controller.dto.BookDetailCreationDto;
+import com.betrybe.alexandria.controller.dto.BookDetailDto;
 import com.betrybe.alexandria.controller.dto.BookDto;
 import com.betrybe.alexandria.entity.Book;
 import com.betrybe.alexandria.service.BookService;
+import com.betrybe.alexandria.service.exception.BookDetailNotFoundException;
 import com.betrybe.alexandria.service.exception.BookNotFoundException;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -59,5 +62,35 @@ public class BookController {
 
   @PostMapping("/{bookId}/detail")
   @ResponseStatus(HttpStatus.CREATED)
+  public BookDetailDto createBookDetail(@PathVariable Long bookId,
+      @RequestBody BookDetailCreationDto bookDetailCreationDto) throws BookNotFoundException {
+    return BookDetailDto.fromEntity(
+        bookService.createBookDetail(bookId, bookDetailCreationDto.toEntity())
+    );
+  }
 
+  @GetMapping("/{bookId}/detail")
+  public BookDetailDto getBookDetail(@PathVariable Long bookId)
+    throws BookNotFoundException, BookDetailNotFoundException {
+    return BookDetailDto.fromEntity(
+        bookService.getBookDetail(bookId)
+    );
+  }
+
+  @PutMapping("/{bookId}/detail")
+  public BookDetailDto updateBookDetail(@PathVariable Long bookId,
+      @RequestBody BookDetailCreationDto bookDetailCreationDto)
+      throws BookNotFoundException, BookDetailNotFoundException {
+    return BookDetailDto.fromEntity(
+        bookService.updateBookDetail(bookId, bookDetailCreationDto.toEntity())
+    );
+  }
+
+  @DeleteMapping("/{bookId}/detail")
+  public BookDetailDto deleteBookDetail(@PathVariable Long bookId)
+      throws BookNotFoundException, BookDetailNotFoundException {
+    return BookDetailDto.fromEntity(
+        bookService.deleteBookDetail(bookId)
+    );
+  }
 }
